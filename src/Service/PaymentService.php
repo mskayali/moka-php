@@ -99,6 +99,22 @@ class PaymentService extends AbstractService
      * @param \Moka\Model\CreatePaymentRequest $createPaymentRequest
      * @return \Moka\ApiResponse
      */
+    public function createThreedsMarketPlace(CreatePaymentRequest $createPaymentRequest)
+    {
+        $request = new PaymentDealerRequest();
+        $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setPaymentDealerRequest($createPaymentRequest);
+
+        return $this->request('POST', '/PaymentDealer/DoDirectPaymentMarketPlace', $request);
+    }
+    public function createThreedsThreeDMarketPlace(CreatePaymentRequest $createPaymentRequest)
+    {
+        $request = new PaymentDealerRequest();
+        $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setPaymentDealerRequest($createPaymentRequest);
+
+        return $this->request('POST', '/PaymentDealer/DoDirectPaymentThreeDMarketPlace', $request);
+    }
     public function createThreeds(CreatePaymentRequest $createPaymentRequest)
     {
         $request = new PaymentDealerRequest();
