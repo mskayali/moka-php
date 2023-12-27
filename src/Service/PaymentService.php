@@ -10,6 +10,7 @@ use Moka\Model\CreateMobilePaymentRequest;
 use Moka\Model\CreatePaymentRequest;
 use Moka\Model\PaymentDealerRequest;
 use Moka\Model\RetrieveInstallmentInfoRequest;
+use Moka\Model\RetrieveTransactionListRequest;
 use Moka\Model\RetrievePaymentAmountRequest;
 use Moka\Model\RetrievePaymentDetailRequest;
 use Moka\Model\RetrievePaymentListRequest;
@@ -187,5 +188,33 @@ class PaymentService extends AbstractService
         $request->setPaymentDealerRequest($updatePaymentRequest);
 
         return $this->request('POST', '/PaymentDealer/UpdateDealerPayment', $request);
+    }
+    /**
+     * @param \Moka\Model\UpdatePaymentRequest $updatePaymentRequest
+     * @return \Moka\ApiResponse
+     */
+    public function retrivePaymentListMarketPlace(RetrievePaymentListRequest $updatePaymentRequest)
+    {
+        $request = new PaymentDealerRequest();
+        $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setPaymentDealerRequest($updatePaymentRequest);
+
+        return $this->request('POST', '/PaymentDealer/GetPaymentListMarketPlace', $request);
+    }
+    public function retrivePaymentTrxListMarketPlace(RetrieveTransactionListRequest $updatePaymentRequest)
+    {
+        $request = new PaymentDealerRequest();
+        $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setPaymentDealerRequest($updatePaymentRequest);
+
+        return $this->request('POST', '/PaymentDealer/GetPaymentTrxListMarketPlace', $request);
+    }
+    public function retriveDealerPaymentTrxDetailListMarketPlace(RetrieveTransactionListRequest $updatePaymentRequest)
+    {
+        $request = new PaymentDealerRequest();
+        $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setPaymentDealerRequest($updatePaymentRequest);
+
+        return $this->request('POST', '/PaymentDealer/GetPaymentTrxListMarketPlace', $request);
     }
 }
