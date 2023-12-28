@@ -15,6 +15,11 @@ class RetrievePaymentListRequest extends Model
     protected $paymentEndDate;
 
     /**
+     * @var int
+     */
+    protected $subDealerId;
+
+    /**
      * @var integer
      */
     protected $paymentStatus;
@@ -23,6 +28,23 @@ class RetrievePaymentListRequest extends Model
      * @var integer
      */
     protected $trxStatus;
+
+
+    /**
+     * @return int
+     */
+    public function getSubDealerId()
+    {
+        return $this->subDealerId;
+    }
+
+    /**
+     * @param int $subDealerId  
+     */
+    public function setSubDealerId($subDealerId)
+    {
+        $this->subDealerId = $subDealerId;
+    }
 
     /**
      * @return string
@@ -91,6 +113,7 @@ class RetrievePaymentListRequest extends Model
     public function toArray()
     {
         return [
+            'SubDealerId' => $this->getSubDealerId(),
             'PaymentStartDate' => $this->getPaymentStartDate(),
             'PaymentEndDate' => $this->getPaymentEndDate(),
             'PaymentStatus' => $this->getPaymentStatus(),

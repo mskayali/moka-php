@@ -39,7 +39,7 @@ class DealerCustomerRequest extends Model
     }
 
     /**
-     * @param mixed $dealerCustomerRequest  
+     * @param mixed $dealerCustomerRequest
      */
     public function setDealerCustomerRequest($dealerCustomerRequest)
     {

@@ -48,6 +48,10 @@ class CreatePaymentRequest extends Model
      * @var int
      */
     protected $installmentNumber;
+    /**
+     * @var int
+     */
+    protected $commissionScenario;
 
     /**
      * @var string
@@ -266,6 +270,21 @@ class CreatePaymentRequest extends Model
     public function setInstallmentNumber($installmentNumber)
     {
         $this->installmentNumber = $installmentNumber;
+    }
+    /**
+     * @return int
+     */
+    public function getCommissionScenario()
+    {
+        return $this->commissionScenario;
+    }
+
+    /**
+     * @param int $commissionScenario  
+     */
+    public function setCommissionScenario($commissionScenario)
+    {
+        $this->commissionScenario = $commissionScenario;
     }
 
     /**
@@ -520,6 +539,7 @@ class CreatePaymentRequest extends Model
             'Amount' => $this->getAmount(),
             'Currency' => $this->getCurrency(),
             'InstallmentNumber' => $this->getInstallmentNumber(),
+            'CommissionScenario' => $this->getCommissionScenario(),
             'ClientIP' => $this->getClientIp(),
             'OtherTrxCode' => $this->getOtherTrxCode(),
             'SubMerchantName' => $this->getSubMerchantName(),

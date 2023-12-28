@@ -7,6 +7,11 @@ class RetrievePaymentDetailRequest extends Model
     /**
      * @var string
      */
+    protected $subDealerId;
+
+    /**
+     * @var string
+     */
     protected $paymentId;
 
     /**
@@ -45,12 +50,28 @@ class RetrievePaymentDetailRequest extends Model
     {
         $this->otherTrxCode = $otherTrxCode;
     }
+    /**
+     * @return int
+     */
+    public function getSubDealerId()
+    {
+        return $this->subDealerId;
+    }
+
+    /**
+     * @param int $subDealerId  
+     */
+    public function setSubDealerId($subDealerId)
+    {
+        $this->subDealerId = $subDealerId;
+    }
 
     public function toArray()
     {
         return [
             'PaymentId' => $this->getPaymentId(),
-            'OtherTrxCode' => $this->getOtherTrxCode()
+            'OtherTrxCode' => $this->getOtherTrxCode(),
+            'SubDealerId' => $this->getSubDealerId()
         ];
     }
 }

@@ -23,6 +23,26 @@ class RetrieveTransactionListRequest extends Model
      * @var integer
      */
     protected $trxStatus;
+    /**
+     * @var integer
+     */
+    protected $subDealerId;
+
+    /**
+     * @return int
+     */
+    public function getSubDealerId()
+    {
+        return $this->subDealerId;
+    }
+
+    /**
+     * @param int $subDealerId  
+     */
+    public function setSubDealerId($subDealerId)
+    {
+        $this->subDealerId = $subDealerId;
+    }
 
     /**
      * @return string
@@ -94,7 +114,8 @@ class RetrieveTransactionListRequest extends Model
             'TrxStartDate' => $this->getTrxStartDate(),
             'TrxEndDate' => $this->getTrxEndDate(),
             'TrxType' => $this->getTrxType(),
-            'TrxStatus' => $this->getTrxStatus()
+            'TrxStatus' => $this->getTrxStatus(),
+            'SubDealerId' => $this->getSubDealerId()
         ];
     }
 }

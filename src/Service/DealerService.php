@@ -4,6 +4,7 @@ namespace Moka\Service;
 
 use Moka\Model\DealerRequest;
 use Moka\Model\RetrieveDealerRequest;
+use Moka\Model\CreateDealerRequest;
 
 class DealerService extends AbstractService
 {
@@ -19,7 +20,7 @@ class DealerService extends AbstractService
 
         return $this->request('POST', '/Dealer/GetDealer', $request);
     }
-    public function create(RetrieveDealerRequest $createDealerRequest)
+    public function create(CreateDealerRequest $createDealerRequest)
     {
         $request = new DealerRequest();
         $request->setDealerAuthentication($this->getClient()->getAuthorizationParams());
@@ -27,7 +28,7 @@ class DealerService extends AbstractService
 
         return $this->request('POST', '/Dealer/CreateDirectDealer', $request);
     }
-    public function update(RetrieveDealerRequest $createDealerRequest)
+    public function update(CreateDealerRequest $createDealerRequest)
     {
         $request = new DealerRequest();
         $request->setDealerAuthentication($this->getClient()->getAuthorizationParams());

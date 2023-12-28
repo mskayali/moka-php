@@ -138,18 +138,7 @@ class PaymentService extends AbstractService
         return $this->request('POST', '/PaymentDealer/DoDirectPaymentThreeDMobile', $request);
     }
 
-    /**
-     * @param \Moka\Model\RetrievePaymentDetailRequest $retrievePaymentDetailRequest
-     * @return \Moka\ApiResponse
-     */
-    public function retrieve(RetrievePaymentDetailRequest $retrievePaymentDetailRequest)
-    {
-        $request = new PaymentDealerRequest();
-        $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
-        $request->setPaymentDealerRequest($retrievePaymentDetailRequest);
 
-        return $this->request('POST', '/PaymentDealer/GetDealerPaymentTrxDetailList', $request);
-    }
 
     /**
      * @param \Moka\Model\RetrievePaymentAmountRequest $retrievePaymentAmountRequest
@@ -201,15 +190,31 @@ class PaymentService extends AbstractService
 
         return $this->request('POST', '/PaymentDealer/GetPaymentListMarketPlace', $request);
     }
-    public function retrivePaymentTrxListMarketPlace(RetrieveTransactionListRequest $updatePaymentRequest)
+
+
+    /**
+     * @param \Moka\Model\RetrievePaymentDetailRequest $retrievePaymentDetailRequest
+     * @return \Moka\ApiResponse
+     */
+    public function retrieveTrx(RetrievePaymentDetailRequest $retrievePaymentDetailRequest)
     {
         $request = new PaymentDealerRequest();
         $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
-        $request->setPaymentDealerRequest($updatePaymentRequest);
+        $request->setPaymentDealerRequest($retrievePaymentDetailRequest);
 
-        return $this->request('POST', '/PaymentDealer/GetPaymentTrxListMarketPlace', $request);
+        return $this->request('POST', '/PaymentDealer/GetDealerPaymentTrxDetailList', $request);
     }
-    public function retriveDealerPaymentTrxDetailListMarketPlace(RetrieveTransactionListRequest $updatePaymentRequest)
+
+    public function retrieveTrxMarketPlace(RetrievePaymentDetailRequest $retrievePaymentDetailRequest)
+    {
+        $request = new PaymentDealerRequest();
+        $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setPaymentDealerRequest($retrievePaymentDetailRequest);
+
+        return $this->request('POST', '/PaymentDealer/GetDealerPaymentTrxDetailListMarketPlace', $request);
+    }
+
+    public function retrivePaymentTrxListMarketPlace(RetrieveTransactionListRequest $updatePaymentRequest)
     {
         $request = new PaymentDealerRequest();
         $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());

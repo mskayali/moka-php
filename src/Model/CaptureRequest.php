@@ -24,6 +24,8 @@ class CaptureRequest extends Model
      */
     protected $clientIp;
 
+    protected $subDealer;
+
     /**
      * @return string
      */
@@ -87,6 +89,21 @@ class CaptureRequest extends Model
     {
         $this->clientIp = $clientIp;
     }
+    /**
+     * @return array
+     */
+    public function getSubDealer()
+    {
+        return $this->subDealer;
+    }
+
+    /**
+     * @param string $subDealer  
+     */
+    public function setSubDealer($subDealer)
+    {
+        $this->subDealer = $subDealer;
+    }
 
     public function toArray()
     {
@@ -94,7 +111,8 @@ class CaptureRequest extends Model
             'VirtualPosOrderId' => $this->getVirtualPosOrderId(),
             'OtherTrxCode' => $this->getOtherTrxCode(),
             'Amount' => $this->getAmount(),
-            'ClientIP' => $this->getClientIP()
+            'ClientIP' => $this->getClientIP(),
+            'SubDealer' => $this->getSubDealer()
         ];
     }
 }
