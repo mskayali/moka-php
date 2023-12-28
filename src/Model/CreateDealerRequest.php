@@ -86,7 +86,7 @@ class CreateDealerRequest extends Model
     /**
      * @param int $dealerType  
      */
-    public function setdealerType(int $dealerType)
+    public function setDealerType(int $dealerType)
     {
         $this->dealerType = $dealerType;
     }

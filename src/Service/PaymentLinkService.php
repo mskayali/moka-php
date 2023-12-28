@@ -3,6 +3,7 @@
 namespace Moka\Service;
 
 use Moka\Model\CreatePaymentLinkRequest;
+use Moka\Model\CreatePaymentLinkRequestMarketPlace;
 use Moka\Model\PaymentUserPosRequest;
 
 class PaymentLinkService extends AbstractService
@@ -18,5 +19,13 @@ class PaymentLinkService extends AbstractService
         $request->setPaymentUserPosRequest($createPaymentLinkRequest);
 
         return $this->request('POST', '/PaymentUserPos/CreateUserPosPayment', $request);
+    }
+    public function createMarketPlace(CreatePaymentLinkRequestMarketPlace $createPaymentLinkRequestMarketPlace)
+    {
+        $request = new PaymentUserPosRequest();
+        $request->setDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setPaymentUserPosRequest($createPaymentLinkRequestMarketPlace);
+
+        return $this->request('POST', '/PaymentUserPos/CreateUserPosPaymentMarketPlace', $request);
     }
 }
