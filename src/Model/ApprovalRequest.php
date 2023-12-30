@@ -8,7 +8,10 @@ class ApprovalRequest extends Model
      * @var string
      */
     protected $virtualPosOrderId;
-
+    /**
+     * @var SubDealer
+     */
+    protected $subDealer;
     /**
      * @var string
      */
@@ -45,12 +48,28 @@ class ApprovalRequest extends Model
     {
         $this->otherTrxCode = $otherTrxCode;
     }
+    /**
+     * @return SubDealer
+     */
+    public function getSubDealer()
+    {
+        return $this->subDealer;
+    }
+
+    /**
+     * @param SubDealer $subDealer  
+     */
+    public function setSubDealer($subDealer)
+    {
+        $this->subDealer = $subDealer;
+    }
 
     public function toArray()
     {
         return [
             'VirtualPosOrderId' => $this->getVirtualPosOrderId(),
-            'OtherTrxCode' => $this->getOtherTrxCode()
+            'OtherTrxCode' => $this->getOtherTrxCode(),
+            'SubDealer' => $this->getSubDealer()
         ];
     }
 }

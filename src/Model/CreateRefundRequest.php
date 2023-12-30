@@ -5,6 +5,10 @@ namespace Moka\Model;
 class CreateRefundRequest extends Model
 {
     /**
+     * @var SubDealer
+     */
+    protected $subDealer;
+    /**
      * @var string
      */
     protected $virtualPosOrderId;
@@ -34,7 +38,21 @@ class CreateRefundRequest extends Model
     {
         $this->virtualPosOrderId = $virtualPosOrderId;
     }
+    /**
+     * @return SubDealer
+     */
+    public function getSubDealer()
+    {
+        return $this->subDealer;
+    }
 
+    /**
+     * @param SubDealer $subDealer  
+     */
+    public function setSubDealer($subDealer)
+    {
+        $this->subDealer = $subDealer;
+    }
     /**
      * @return string
      */
@@ -70,6 +88,7 @@ class CreateRefundRequest extends Model
     public function toArray()
     {
         return [
+            'SubDealer' => $this->getSubDealer(),
             'VirtualPosOrderId' => $this->getVirtualPosOrderId(),
             'OtherTrxCode' => $this->getOtherTrxCode(),
             'Amount' => $this->getAmount()

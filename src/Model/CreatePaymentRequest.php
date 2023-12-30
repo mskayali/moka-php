@@ -112,6 +112,10 @@ class CreatePaymentRequest extends Model
      * @var Customer
      */
     protected $customerInformation;
+    /**
+     * @var SubDealer
+     */
+    protected $subDealer;
 
     /**
      * @var integer
@@ -478,6 +482,21 @@ class CreatePaymentRequest extends Model
     {
         $this->customerInformation = $customerInformation;
     }
+    /**
+     * @return SubDealer
+     */
+    public function getSubDealer()
+    {
+        return $this->subDealer;
+    }
+
+    /**
+     * @param SubDealer $subDealer  
+     */
+    public function setSubDealer(SubDealer $subDealer)
+    {
+        $this->subDealer = $subDealer;
+    }
 
     /**
      * @return integer
@@ -552,6 +571,7 @@ class CreatePaymentRequest extends Model
             'BuyerInformation' => $this->getBuyerInformation(),
             'BasketProduct' => $this->getBasketProduct(),
             'CustomerInformation' => $this->getCustomerInformation(),
+            'SubDealer' => $this->getSubDealer(),
             'ReturnHash' => $this->getReturnHash(),
             'RedirectUrl' => $this->getRedirectUrl(),
             'RedirectType' => $this->getRedirectType()

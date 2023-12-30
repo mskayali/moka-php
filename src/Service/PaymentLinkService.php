@@ -20,7 +20,7 @@ class PaymentLinkService extends AbstractService
 
         return $this->request('POST', '/PaymentUserPos/CreateUserPosPayment', $request);
     }
-    public function createMarketPlace(CreatePaymentLinkRequestMarketPlace $createPaymentLinkRequestMarketPlace)
+    public function createMarketPlace(CreatePaymentLinkRequest $createPaymentLinkRequestMarketPlace)
     {
         $request = new PaymentUserPosRequest();
         $request->setDealerAuthentication($this->getClient()->getAuthorizationParams());

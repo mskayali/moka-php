@@ -49,4 +49,16 @@ class ReportingService extends AbstractService
 
         return $this->request('POST', '/Dealer/GetStatementList', $request);
     }
+    /**
+     * @param \Moka\Model\ReportingStatementListRequest $reportingStatementListRequest
+     * @return \Moka\ApiResponse
+     */
+    public function statemenMarketPlace(ReportingStatementListRequest $reportingStatementListRequest)
+    {
+        $request = new DealerStatementRequest();
+        $request->setDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setDealerStatementRequest($reportingStatementListRequest);
+
+        return $this->request('POST', '/Dealer/GetStatementListMarketPlace', $request);
+    }
 }

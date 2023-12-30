@@ -5,6 +5,10 @@ namespace Moka\Model;
 class ReportingStatementListRequest extends Model
 {
     /**
+     * @var int
+     */
+    protected $subDealerId;
+    /**
      * @var string
      */
     protected $statementStartDate;
@@ -38,6 +42,21 @@ class ReportingStatementListRequest extends Model
     public function setStatementStartDate($statementStartDate)
     {
         $this->statementStartDate = $statementStartDate;
+    }
+    /**
+     * @return int
+     */
+    public function getSubDealerId()
+    {
+        return $this->subDealerId;
+    }
+
+    /**
+     * @param int $subDealerId  
+     */
+    public function setSubDealerId($subDealerId)
+    {
+        $this->subDealerId = $subDealerId;
     }
 
     /**
@@ -91,6 +110,7 @@ class ReportingStatementListRequest extends Model
     public function toArray()
     {
         return [
+            'SubDealerId' => $this->getSubDealerId(),
             'StatementStartDate' => $this->getStatementStartDate(),
             'StatementEndDate' => $this->getStatementEndDate(),
             'AccountingId' => $this->getAccountingId(),

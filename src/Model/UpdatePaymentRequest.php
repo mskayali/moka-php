@@ -5,6 +5,10 @@ namespace Moka\Model;
 class UpdatePaymentRequest extends Model
 {
     /**
+     * @var SubDealer
+     */
+    protected $subDealer;
+    /**
      * @var integer
      */
     protected $dealerPaymentId;
@@ -28,6 +32,10 @@ class UpdatePaymentRequest extends Model
      * @var string
      */
     protected $description;
+    /**
+     * @var int
+     */
+    protected $commissionScenario;
 
     /**
      * @var Buyer
@@ -43,11 +51,41 @@ class UpdatePaymentRequest extends Model
     }
 
     /**
+     * @param integer $subDealer  
+     */
+    public function setSubDealer(SubDealer $subDealer)
+    {
+        $this->subDealer = $subDealer;
+    }
+    /**
+     * @return integer
+     */
+    public function getSubDealer()
+    {
+        return $this->subDealer;
+    }
+
+    /**
      * @param integer $dealerPaymentId  
      */
     public function setDealerPaymentId($dealerPaymentId)
     {
         $this->dealerPaymentId = $dealerPaymentId;
+    }
+    /**
+     * @return integer
+     */
+    public function getCommissionScenario()
+    {
+        return $this->commissionScenario;
+    }
+
+    /**
+     * @param integer $commissionScenario  
+     */
+    public function setCommissionScenario($commissionScenario)
+    {
+        $this->commissionScenario = $commissionScenario;
     }
 
     /**
@@ -133,7 +171,9 @@ class UpdatePaymentRequest extends Model
     public function toArray()
     {
         return [
+            'CommissionScenario' => $this->getCommissionScenario(),
             'DealerPaymentId' => $this->getDealerPaymentId(),
+            'SubDealer' => $this->getSubDealer(),
             'OtherTrxCode' => $this->getOtherTrxCode(),
             'VirtualPosOrderId' => $this->getVirtualPosOrderId(),
             'Software' => $this->getSoftware(),

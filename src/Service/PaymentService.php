@@ -7,6 +7,7 @@ use Moka\Model\CancelApprovalRequest;
 use Moka\Model\CancelPaymentRequest;
 use Moka\Model\CaptureRequest;
 use Moka\Model\CreateMobilePaymentRequest;
+use Moka\Model\CreatePaymentRequestMarketPlace;
 use Moka\Model\CreatePaymentRequest;
 use Moka\Model\PaymentDealerRequest;
 use Moka\Model\RetrieveInstallmentInfoRequest;
@@ -177,6 +178,14 @@ class PaymentService extends AbstractService
         $request->setPaymentDealerRequest($updatePaymentRequest);
 
         return $this->request('POST', '/PaymentDealer/UpdateDealerPayment', $request);
+    }
+    public function updateMarketPlace(UpdatePaymentRequest $updatePaymentRequest)
+    {
+        $request = new PaymentDealerRequest();
+        $request->setPaymentDealerAuthentication($this->getClient()->getAuthorizationParams());
+        $request->setPaymentDealerRequest($updatePaymentRequest);
+
+        return $this->request('POST', '/PaymentDealer/UpdateDealerPaymentMarketPlace', $request);
     }
     /**
      * @param \Moka\Model\UpdatePaymentRequest $updatePaymentRequest

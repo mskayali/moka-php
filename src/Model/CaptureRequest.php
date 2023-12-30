@@ -23,7 +23,9 @@ class CaptureRequest extends Model
      * @var string
      */
     protected $clientIp;
-
+    /**
+     * @var SubDealer
+     */
     protected $subDealer;
 
     /**
@@ -98,9 +100,9 @@ class CaptureRequest extends Model
     }
 
     /**
-     * @param string $subDealer  
+     * @param SubDealer $subDealer  
      */
-    public function setSubDealer($subDealer)
+    public function setSubDealer(SubDealer $subDealer)
     {
         $this->subDealer = $subDealer;
     }

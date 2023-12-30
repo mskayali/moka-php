@@ -5,6 +5,14 @@ namespace Moka\Model;
 class CreatePaymentLinkRequest extends Model
 {
     /**
+     * @var array List
+     */
+    protected $subDealer;
+    /**
+     * @var int
+     */
+    protected $commissionScenario;
+    /**
      * @var string
      */
     protected $otherTrxCode;
@@ -148,7 +156,36 @@ class CreatePaymentLinkRequest extends Model
      * @var BasketProduct
      */
     protected $basketProduct;
+    /**
+     * @return array
+     */
+    public function getSubDealer()
+    {
+        return $this->subDealer;
+    }
 
+    /**
+     * @param string $subDealer  
+     */
+    public function setSubDealer($subDealer)
+    {
+        $this->subDealer = $subDealer;
+    }
+    /**
+     * @return int
+     */
+    public function getCommissionScenario()
+    {
+        return $this->commissionScenario;
+    }
+
+    /**
+     * @param int $commissionScenario  
+     */
+    public function setCommissionScenario($commissionScenario)
+    {
+        $this->commissionScenario = $commissionScenario;
+    }
     /**
      * @return string
      */
@@ -616,6 +653,8 @@ class CreatePaymentLinkRequest extends Model
     public function toArray()
     {
         return [
+            'SubDealer' => $this->getSubDealer(),
+            'CommissionScenario' => $this->getCommissionScenario(),
             'OtherTrxCode' => $this->getOtherTrxCode(),
             'DealerCustomerTypeId' => $this->getDealerCustomerTypeId(),
             'FullName' => $this->getFullName(),
