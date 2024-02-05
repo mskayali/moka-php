@@ -34,6 +34,9 @@ class DealerService extends AbstractService
         $request->setDealerAuthentication($this->getClient()->getAuthorizationParams());
         $request->setDealerRequest($createDealerRequest);
 
+        // var_dump($request->getDealerAuthentication(),$request->getDealerRequest()); die;
+
+
         return $this->request('POST', '/Dealer/UpdateDealer', $request);
     }
 }

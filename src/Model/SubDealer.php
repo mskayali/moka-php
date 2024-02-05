@@ -61,7 +61,7 @@ class SubDealer extends Model
     public function getDealerCommissionFixedAmount(){
         return $this->dealerCommissionFixedAmount;
     }
-    public function setDealerCommissionFixedAmount(float $dealerCommissionFixedAmount){
+    public function setDealerCommissionFixedAmount($dealerCommissionFixedAmount){
         $this->dealerCommissionFixedAmount=$dealerCommissionFixedAmount;
 
     }
@@ -89,7 +89,7 @@ class SubDealer extends Model
     public function getIsIncludedFixedAmount(){
         return $this->isIncludedFixedAmount;
     }
-    public function setIsIncludedFixedAmount(float $isIncludedFixedAmount){
+    public function setIsIncludedFixedAmount(bool $isIncludedFixedAmount){
         $this->isIncludedFixedAmount=$isIncludedFixedAmount;
     }
 

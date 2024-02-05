@@ -9,9 +9,10 @@ class ApprovalRequest extends Model
      */
     protected $virtualPosOrderId;
     /**
-     * @var SubDealer
+     * @var int[]
      */
-    protected $subDealer;
+
+    protected $subDealers=[];
     /**
      * @var string
      */
@@ -49,19 +50,27 @@ class ApprovalRequest extends Model
         $this->otherTrxCode = $otherTrxCode;
     }
     /**
-     * @return SubDealer
+     * @return int
      */
-    public function getSubDealer()
+    public function getSubDealers()
     {
-        return $this->subDealer;
+        $output=[];
+        foreach (array_unique($this->subDealers) as $key => $id) {
+            $output[]['DealerId']=$id;
+        }
+        return $output;
     }
 
     /**
-     * @param SubDealer $subDealer  
+     * @param int $subDealer  
      */
-    public function setSubDealer($subDealer)
+    public function setSubDealer($subDealerId)
     {
-        $this->subDealer = $subDealer;
+        $this->subDealers[] = $subDealerId;
+    }
+    public function setSubDealers($subDealers)
+    {
+        $this->subDealers = $subDealers;
     }
 
     public function toArray()
@@ -69,7 +78,7 @@ class ApprovalRequest extends Model
         return [
             'VirtualPosOrderId' => $this->getVirtualPosOrderId(),
             'OtherTrxCode' => $this->getOtherTrxCode(),
-            'SubDealer' => $this->getSubDealer()
+            'SubDealer' => $this->getSubDealers()
         ];
     }
 }

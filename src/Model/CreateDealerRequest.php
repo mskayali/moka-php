@@ -13,6 +13,9 @@ class CreateDealerRequest extends Model
      */
     protected $trIdentityNumber;
 
+    protected $subDealerCode;
+    protected $dealerName;
+
     /**
      * @var string
      */
@@ -73,6 +76,7 @@ class CreateDealerRequest extends Model
      * @var string
      */
     protected $mokaPosProposalTemplateRateId;
+    protected $commissionRateList;
 
 
     /**
@@ -91,6 +95,21 @@ class CreateDealerRequest extends Model
         $this->dealerType = $dealerType;
     }
     /**
+     * @var int
+     */
+    public function getCommissionRateList()
+    {
+        return $this->commissionRateList ?? [];
+    }
+
+    /**
+     * @param int $commissionRateList  
+     */
+    public function setCommissionRateList(int $commissionRateList)
+    {
+        $this->commissionRateList = $commissionRateList;
+    }
+    /**
      * @var string
      */
     public function getTrIdentityNumber()
@@ -101,9 +120,24 @@ class CreateDealerRequest extends Model
     /**
      * @param string $trIdentityNumber  
      */
-    public function setTrIdentityNumber(string $trIdentityNumber)
+    public function setTrIdentityNumber($trIdentityNumber)
     {
         $this->trIdentityNumber = $trIdentityNumber;
+    }
+    /**
+     * @var string
+     */
+    public function getDealerName()
+    {
+        return $this->dealerName;
+    }
+
+    /**
+     * @param string $DealerName  
+     */
+    public function setDealerName($dealerName)
+    {
+        $this->dealerName = $dealerName;
     }
     /**
      * @var string
@@ -116,7 +150,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $individualName  
      */
-    public function setIndividualName(string $individualName)
+    public function setIndividualName($individualName)
     {
         $this->individualName = $individualName;
     }
@@ -131,9 +165,24 @@ class CreateDealerRequest extends Model
     /**
      * @param string $TaxNumber  
      */
-    public function setTaxNumber(string $taxNumber)
+    public function setTaxNumber($taxNumber)
     {
         $this->taxNumber = $taxNumber;
+    }
+    /**
+     * @var string
+     */
+    public function getSubDealerCode()
+    {
+        return $this->subDealerCode;
+    }
+
+    /**
+     * @param string $subDealerCode  
+     */
+    public function setSubDealerCode($subDealerCode)
+    {
+        $this->subDealerCode = $subDealerCode;
     }
     /**
      * @var string
@@ -146,7 +195,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $companyName  
      */
-    public function setCompanyName(string $companyName)
+    public function setCompanyName($companyName)
     {
         $this->companyName = $companyName;
     }
@@ -161,7 +210,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $ContactName  
      */
-    public function setContactName(string $contactName)
+    public function setContactName($contactName)
     {
         $this->contactName = $contactName;
     }
@@ -176,7 +225,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $email  
      */
-    public function setEmail(string $email)
+    public function setEmail($email)
     {
         $this->email = $email;
     }
@@ -191,7 +240,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $phoneNumber  
      */
-    public function setPhoneNumber(string $phoneNumber)
+    public function setPhoneNumber($phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
     }
@@ -206,7 +255,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $CityCode  
      */
-    public function setCityCode(int $cityCode)
+    public function setCityCode($cityCode)
     {
         $this->cityCode = $cityCode;
     }
@@ -221,9 +270,9 @@ class CreateDealerRequest extends Model
     /**
      * @param string $countryCode  
      */
-    public function setCountryCode(int $countryCode)
+    public function setCountryCode($countryCode)
     {
-        $this->countryCode = $countryCode;
+        $this->countryCode = CountryModel::getCountryIdByCode($countryCode);
     }
     /**
      * @var string
@@ -236,7 +285,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $address  
      */
-    public function setAddress(string $address)
+    public function setAddress($address)
     {
         $this->address = $address;
     }
@@ -251,7 +300,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $iBanFullName  
      */
-    public function setIBanFullName(string $iBanFullName)
+    public function setIBanFullName($iBanFullName)
     {
         $this->iBanFullName = $iBanFullName;
     }
@@ -266,7 +315,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $iBan  
      */
-    public function setIBan(string $iBan)
+    public function setIBan($iBan)
     {
         $this->iBan = $iBan;
     }
@@ -281,7 +330,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $blockedDayNumber  
      */
-    public function setBlockedDayNumber(int $blockedDayNumber)
+    public function setBlockedDayNumber($blockedDayNumber)
     {
         $this->blockedDayNumber = $blockedDayNumber;
     }
@@ -296,7 +345,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $PaymentDaysOfWeek  
      */
-    public function setPaymentDaysOfWeek(string $paymentDaysOfWeek)
+    public function setPaymentDaysOfWeek($paymentDaysOfWeek)
     {
         $this->paymentDaysOfWeek = $paymentDaysOfWeek;
     }
@@ -311,7 +360,7 @@ class CreateDealerRequest extends Model
     /**
      * @param string $mokaPosProposalTemplateLimitId  
      */
-    public function setMokaPosProposalTemplateLimitId(int $mokaPosProposalTemplateLimitId)
+    public function setMokaPosProposalTemplateLimitId($mokaPosProposalTemplateLimitId)
     {
         $this->mokaPosProposalTemplateLimitId = $mokaPosProposalTemplateLimitId;
     }
@@ -335,9 +384,12 @@ class CreateDealerRequest extends Model
     public function toArray()
     {
         return [
+            'CommissionRateList'=>$this->getCommissionRateList(),
+            'DealerName'=>$this->getDealerName(),
             'DealerType'=>$this->getDealerType(),
             'TRIdentityNumber'=>$this->getTrIdentityNumber(),
             'IndividualName'=>$this->getIndividualName(),
+            'SubDealerCode'=>$this->getSubDealerCode(),
             'TaxNumber'=>$this->getTaxNumber(),
             'CompanyName'=>$this->getCompanyName(),
             'ContactName'=>$this->getContactName(),

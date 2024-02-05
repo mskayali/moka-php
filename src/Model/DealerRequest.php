@@ -50,7 +50,7 @@ class DealerRequest extends Model
     {
         return [
             'DealerAuthentication' => $this->getDealerAuthentication(),
-            'DealerRequest' => $this->getDealerRequest()
+            empty($this->getDealerRequest()->getSubDealerCode()) ? 'DealerRequest' : 'UpdateDealerRequest' => $this->getDealerRequest()
         ];
     }
 }

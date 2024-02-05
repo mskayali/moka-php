@@ -493,7 +493,7 @@ class CreatePaymentRequest extends Model
     /**
      * @param SubDealer $subDealer  
      */
-    public function setSubDealer(SubDealer $subDealer)
+    public function setSubDealer($subDealer)
     {
         $this->subDealer = $subDealer;
     }
